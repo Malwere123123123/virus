@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVISO DE SEGURANÇA</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #121212;
+            color: #ff0000;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            animation: backgroundPulse 3s infinite alternate;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+        }
+        p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .instructions {
+            font-size: 20px;
+            margin-top: 30px;
+            color: #ffffff;
+            border: 2px dashed #ff0000;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .alert {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+        .error {
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        #timer {
+            font-size: 36px;
+            color: #ffcc00;
+            margin-top: 20px;
+        }
+
+        @keyframes backgroundPulse {
+            0% {
+                background-color: #121212;
+            }
+            100% {
+                background-color: #1a1a1a;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .final-message {
+            display: none;
+            font-size: 32px;
+            color: #ffcc00;
+            text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+            padding: 20px;
+            border: 2px solid #ffcc00;
+            background-color: rgba(0, 0, 0, 0.85);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="fade-in">
+    <div id="mainContent">
+        <h1>ATENÇÃO!</h1>
+        <p>Seu dispositivo foi infectado com um malware extremamente danoso!</p>
+        <p>Identificamos atividades suspeitas em seu sistema que podem comprometer sua segurança.</p>
+        <p class="alert">*** ALERTA DE SEGURANÇA ***</p>
+        <p>Foi detectada uma tentativa de acesso não autorizado aos seus dados pessoais!</p>
+        <p class="error">CUIDADO: Seu acesso a dados sensíveis pode estar em risco!</p>
+        <p>Recomendamos que você siga as instruções abaixo imediatamente:</p>
+        <div class="instructions">
+            <p>1. Desligue seu computador imediatamente!</p>
+            <p>2. Não reinicie o sistema até que o problema seja resolvido.</p>
+            <p>3. Entre em contato com um especialista em segurança.</p>
+        </div>
+        <p>Se você não agir agora, poderá perder todos os seus dados!</p>
+        <p>Por favor, leve esta situação a sério!</p>
+        
+        <div id="timer">30</div>
+    </div>
+
+    <div id="finalMessage" class="final-message">
+        <p><strong>ALERTA CRÍTICO!</strong></p>
+        <p><strong>O malware tomou conta de todo o seu sistema!</strong></p>
+        <p>Estamos diante de uma grave situação de segurança.</p>
+        <p><strong>Mantenha a calma e desligue seu computador imediatamente!</strong></p>
+        <p><strong>Procure um profissional de segurança de dados com urgência!</strong></p>
+    </div>
+
+    <script>
+        let timeLeft = 30;
+        const timerElement = document.getElementById('timer');
+        const mainContent = document.getElementById('mainContent');
+        const finalMessage = document.getElementById('finalMessage');
+
+        const countdown = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                mainContent.style.display = 'none';
+                finalMessage.style.display = 'block';
+            } else {
+                timerElement.textContent = timeLeft;
+                timeLeft--;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
